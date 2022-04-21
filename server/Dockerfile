@@ -1,4 +1,4 @@
-FROM node:15-alpine AS builder
+FROM node:18-alpine AS builder
 
 WORKDIR /workspace
 
@@ -8,7 +8,7 @@ RUN yarn install \
   && yarn run build
 
 
-FROM node:15-alpine
+FROM node:18-alpine
 
 COPY --from=builder /workspace/dist ./dist
 COPY --from=builder /workspace/package.json .
